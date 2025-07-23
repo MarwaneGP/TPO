@@ -13,6 +13,10 @@ jobs:
     #   run:
     #     - working-directory: ./infrastructure
     steps:
+      - name: install terraform
+        uses: hashicorp/setup-terraform@v2
+        with:
+          terraform_version: 1.5.7
       - name: Checkout
         uses: actions/checkout@v4
       - name: Configure AWS credentials

@@ -15,6 +15,7 @@ jobs:
     steps:
       - name: install terraform
         uses: hashicorp/setup-terraform@v2
+        run: echo "Installing Terraform"
         with:
           terraform_version: 1.5.7
       - name: Checkout

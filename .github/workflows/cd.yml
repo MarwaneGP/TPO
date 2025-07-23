@@ -12,22 +12,29 @@ jobs:
     defaults:
       run:
         working-directory: ./infra
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
           audience: sts.amazonaws.com
           role-to-assume: arn:aws:iam::662147645652:role/deploy-terraform
           aws-region: eu-west-1
-      - name: install terraform
+
+      - name: Install Terraform
         uses: hashicorp/setup-terraform@v3
-      - name: deploy terraform
-        run: 
+
+      - name: Terraform Init & Apply
+        run: |
           terraform fmt
           terraform init
           terraform apply -auto-approve
-      - name: destroy terraform
-        run: 
-          terraform destroy -auto-approve=true
+
+      - name: Terraform Destroy (Optional)
+        if: false 
+        run: |
+          terraform init
+          terraform destroy -auto-approve

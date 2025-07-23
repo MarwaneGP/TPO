@@ -19,7 +19,7 @@ jobs:
         uses: aws-actions/configure-aws-credentials@v4
         with:
           audience: sts.amazonaws.com
-          role-to-assume: arn:aws:iam::123456789012:role/YourRoleName
+          role-to-assume: arn:aws:iam::662147645652:role/deploy-terraform
           aws-region: eu-west-1
       - name: deploy terraform
         run: 
